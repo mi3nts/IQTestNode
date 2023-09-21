@@ -18,7 +18,7 @@ import serial.tools.list_ports
 from collections import OrderedDict
 from glob import glob
 from mintsXU4 import mintsDefinitions as mD
-from mintsXU4 import mintsPoLo as mPL
+# from mintsXU4 import mintsPoLo as mPL
 from collections import OrderedDict
 import struct
 import numpy as np
