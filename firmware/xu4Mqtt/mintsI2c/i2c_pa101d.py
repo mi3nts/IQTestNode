@@ -135,6 +135,4 @@ class PAI101D_:
 
             except TimeoutError:
                 continue
-        print("STR not found")
-        # self.gps.send_command("$PMTK161,0*28")
         return;
