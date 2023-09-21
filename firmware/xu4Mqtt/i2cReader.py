@@ -69,11 +69,11 @@ if __name__ == "__main__":
             if bme280Online:
                 bme280.readMqtt();
             if pa101dOnline:
-                pa101d.readMqtt("GPRMC");                        
+                pa101d.readMqtt("RMC");                        
             if scd30Online:
                 scd30.readMqtt();
             if pa101dOnline:
-                pa101d.readMqtt("GPGGA");                        
+                pa101d.readMqtt("GGA");                        
         
 
         except Exception as e:
