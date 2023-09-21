@@ -29,7 +29,7 @@ def main():
     lastWIMDA = time.time()
     lastYXXDR = time.time()
 
-    delta  = 1
+    delta  = 5
     print("connected to: " + ser.portstr)
 
     #this will store the line
