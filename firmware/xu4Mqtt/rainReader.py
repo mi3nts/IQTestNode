@@ -6,7 +6,7 @@ import sys
 from mintsXU4 import mintsSensorReader as mSR
 from mintsXU4 import mintsDefinitions as mD
 
-rainPort               = '/dev/ttySAC0'
+rainPort               = '/dev/ttyS1'
 firstReset             = True
 firstResolutionSetup   = True
 firstMetricSystemSetup = True
