@@ -61,7 +61,7 @@ macAddress            = findMacAddress()
 latestDisplayOn       = False
 latestOn              = False
 airmarPort            = findAirmarPort()
-airmarPort            = ["/dev/ttyUSB1"]
+airmarPort            = ["/dev/ttyUSB2"]
 # For MQTT 
 
 mqttOn                = True
