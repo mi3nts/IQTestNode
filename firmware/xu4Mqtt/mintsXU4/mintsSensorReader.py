@@ -42,6 +42,7 @@ mqttOn         = mD.mqttOn
 def sensorFinisher(dateTime,sensorName,sensorDictionary):
     #Getting Write Path
     writePath = getWritePath(sensorName,dateTime)
+
     exists = directoryCheck(writePath)
     writeCSV2(writePath,sensorDictionary,exists)
     print(writePath)
@@ -382,7 +383,9 @@ def IPS7100Write(sensorData,dateTime):
     dataOut    = sensorData.split(',')
     sensorName = "IPS7100"
     dataLength = 30
-    if(len(dataOut) == (dataLength)):
+    print(len(dataOut))
+    print(dataOut)
+    if(len(dataOut) == (dataLength) or len(dataOut) == (dataLength - 1)):
         sensorDictionary =  OrderedDict([
                 ("dateTime" , str(dateTime)), # always the same
         		("pc0_1"  ,dataOut[1]), 
@@ -400,6 +403,7 @@ def IPS7100Write(sensorData,dateTime):
             	("pm5_0"  ,dataOut[25]),         
                 ("pm10_0"  ,dataOut[27])
                 ])
+        print(sensorDictionary)
         sensorFinisher(dateTime,sensorName,sensorDictionary)
         
 def BME680Write(sensorData,dateTime):
