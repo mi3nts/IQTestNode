@@ -29,7 +29,7 @@ def main():
     lastWIMDA = time.time()
     lastYXXDR = time.time()
 
-    delta  = 5
+    delta  = 1
     print("connected to: " + ser.portstr)
 
     #this will store the line
@@ -65,7 +65,7 @@ def main():
 
                     if (dataString.startswith("$GPZDA") and mSR.getDeltaTimeAM(lastGPZDA,delta)):
                         mSR.GPZDAWriteAM(dataString,dateTime)
-                        lastGZDA = time.time()
+                        lastGPZDA = time.time()
                     # print(str(dataString))
 
                     if (dataString.startswith("$WIMDA") and mSR.getDeltaTimeAM(lastWIMDA,delta)):
