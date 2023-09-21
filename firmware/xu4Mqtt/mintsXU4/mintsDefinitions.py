@@ -61,23 +61,23 @@ macAddress            = findMacAddress()
 latestDisplayOn       = False
 latestOn              = False
 airmarPort            = findAirmarPort()
+airmarPort            = "/dev/ttyUSB0"
 # For MQTT 
-mqttOn                    = True
-mqttCredentialsFile      = 'mintsXU4/credentials.yml'
-mqttBroker               = "mqtt.circ.utdallas.edu"
-mqttPort                 =  8883  # Secure port
 
-
+mqttOn                = True
+mqttCredentialsFile   = 'mintsXU4/credentials.yml'
+mqttBroker            = "mqtt.circ.utdallas.edu"
+mqttPort              =  8883  # Secure port
 gpsPort               = findPort("GPS/GNSS Receiver")
 
 
 if __name__ == "__main__":
     # the following code is for debugging
     # to make sure everything is working run python3 mintsDefinitions.py 
-    print("Mac Address          : {0}".format(macAddress))
-    print("Data Folder Reference: {0}".format(dataFolderReference))
-    print("Data Folder Raw      : {0}".format(dataFolder))
-    print("Airmar Port           : {0}".format(airmarPort))
+    print("Mac Address                : {0}".format(macAddress))
+    print("Data Folder Reference      : {0}".format(dataFolderReference))
+    print("Data Folder Raw            : {0}".format(dataFolder))
+    print("Airmar Port                : {0}".format(airmarPort))
     print("Latest On                  : {0}".format(latestOn))
     print("MQTT On                    : {0}".format(mqttOn))
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
