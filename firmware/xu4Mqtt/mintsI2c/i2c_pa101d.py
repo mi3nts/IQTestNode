@@ -109,8 +109,8 @@ class PAI101D_:
                                     ("stationID"         ,sensorData.ref_station_id)
                                 ])
 
-                        #Getting Write Path
-                        mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
+                            #Getting Write Path
+                            mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
                     if strExpected == "RMC":
                         if(sensorData.status=='A'):
                             sensorName = "GPSGPRMC2"
@@ -130,8 +130,8 @@ class PAI101D_:
                                     ("magVariation"         ,sensorData.mag_variation),
                                     ("magVariationDirection",sensorData.mag_var_dir)
                                     ])
-                        #Getting Write Path
-                        mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
+                            #Getting Write Path
+                            mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
 
             except TimeoutError:
                 continue
