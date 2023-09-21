@@ -23,7 +23,7 @@ def findAirmarPort():
     ozonePort = []
     for p in ports:
         currentPort = str(p[2])
-        if(currentPort.find("PID=067B")>=0):
+        if(currentPort.find("PID=10C4:EA60 SER=0001")>=0):
             ozonePort.append(str(p[0]).split(" ")[0])
     return ozonePort
   
@@ -61,7 +61,6 @@ macAddress            = findMacAddress()
 latestDisplayOn       = False
 latestOn              = False
 airmarPort            = findAirmarPort()
-airmarPort            = ["/dev/ttyUSB2"]
 # For MQTT 
 
 mqttOn                = True
