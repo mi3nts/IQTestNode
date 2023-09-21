@@ -9,57 +9,12 @@ def findPort(find):
         if(currentPort.endswith(find)):
             return(currentPort.split(" ")[0])
 
-        
-def findRG15Ports():
-    ports = list(serial.tools.list_ports.comports())
-    rg15Ports = []
-    for p in ports:
-        currentPort = str(p[2])
-        if(currentPort.find("PID=0403")>=0):
-            rg15Ports.append(str(p[0]).split(" ")[0])
-    return rg15Ports        
-
-def findDuePort():
-    ports = list(serial.tools.list_ports.comports())
-    for p in ports:
-        currentPort = str(p[2])
-        if(currentPort.find("PID=2341")>=0):
-            return(p[0])
-
-def findNanoPorts():
-    ports = list(serial.tools.list_ports.comports())
-    outPorts = []
-    for p in ports:
-        currentPort = str(p)
-        if(currentPort.endswith("FT232R USB UART")):
-            outPorts.append(currentPort.split(" ")[0])
-
-    return outPorts
-
-def findSabrentPorts():
-    ports = list(serial.tools.list_ports.comports())
-    outPorts = []
-    for p in ports:
-        currentPort = str(p[2])
-        if(currentPort.find("PID=067B")>=0):
-            outPorts.append(str(p[0]).split(" ")[0])
-    return outPorts
-
-def findOzonePort():
-    ports = list(serial.tools.list_ports.comports())
-    ozonePort = []
-    for p in ports:
-        currentPort = str(p[2])
-        if(currentPort.find("PID=067B")>=0):
-            ozonePort.append(str(p[0]).split(" ")[0])
-    return ozonePort
-
 def findIPSPorts():
     ports = list(serial.tools.list_ports.comports())
     ipsPorts = []
     for p in ports:
-        currentPort = str(p[2])
-        if(currentPort.find("PID=10C4")>=0):
+        currentPort = str(p[1])
+        if(currentPort.find("CBL-7100")>=0):
             ipsPorts.append(str(p[0]).split(" ")[0])
     return ipsPorts
   
