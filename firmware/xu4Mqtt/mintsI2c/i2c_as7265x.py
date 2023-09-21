@@ -176,7 +176,7 @@ class AS7265X():
         ("channelA900nm",self.getCalibratedK()),
         ("channelA940nm",self.getCalibratedL()),
             ])        
-        print(sensorDictionary)
+        # print(sensorDictionary)
         mSR.sensorFinisher(dateTime,"AS7265X",sensorDictionary)
         time.sleep(1)        
         return;

@@ -7,6 +7,10 @@ import time
 import bme280
 import math
 
+from collections import OrderedDict
+import datetime
+from mintsXU4 import mintsSensorReader as mSR
+
 # to_s16 = lambda x: (x + 2**15) % 2**16 - 2**15
 # to_u16 = lambda x: x % 2**16
 
@@ -63,3 +67,40 @@ class BME280:
             time.sleep(1)
             print("BME280 Measurments not read")
             return [];
+
+
+    def readMqtt(self):
+        dateTime  = datetime.datetime.now()
+        measurement = bme280.sample(self.i2c, self.i2c_addr, self.calibration_params)
+        if measurement is not None:
+            temperature = measurement.temperature
+            pressure    = measurement.pressure
+            humidity    = measurement.humidity
+            
+            # print("Temperature: {:.2f}'C, Pressure: {:.2f}'C, Relative Humidity: {:.2f}%".format(measurement.temperature,measurement.pressure,measurement.humidity))
+            A = (100*pressure) / 101325;
+            B = 1 / 5.25588
+            C = pow(A, B)
+            C = 1.0 - C
+            altitude = C / 0.0000225577
+            dewPoint = 243.04 * (math.log(humidity/100.0) + ((17.625 * temperature)/(243.04 + temperature)))/(17.625 - math.log(humidity/100.0) - ((17.625 * temperature)/(243.04 + temperature)));
+            time.sleep(1)
+            # Units temperature C, Pressure milliBar, Humidity %, Altitude m
+
+            sensorDictionary =  OrderedDict([
+            ("dateTime"     , str(dateTime)), # always the same
+            ("temperature"  ,temperature),
+            ("pressure"     ,pressure),
+            ("humidity"     ,humidity),
+            ("dewPoint"     ,dewPoint),
+            ("altitude"     ,altitude),
+                ])        
+            # print(sensorDictionary)
+            mSR.sensorFinisher(dateTime,"BME280V2",sensorDictionary)
+            time.sleep(1)   
+            return;
+        
+        else:
+            time.sleep(1)
+            print("BME280 Measurments not read")
+            return;
