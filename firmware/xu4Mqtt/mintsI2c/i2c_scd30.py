@@ -56,7 +56,7 @@ class SCD30:
             return False;
         else:
             self.get_firmware_version()
-            self.set_measurement_interval(15)
+            self.set_measurement_interval(5)
             self.set_auto_self_calibration(active=False)
             self.start_periodic_measurement()
             time.sleep(1)
