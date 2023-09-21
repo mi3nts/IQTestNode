@@ -47,21 +47,6 @@ bme280  = BME280(bus,debug)
 as7265x = AS7265X(bus,debug)
 pa101d  = PAI101D_(bus,debug)
 
-def getLatitudeCords(latitudeStr,latitudeDirection):
-    latitude = float(latitudeStr)
-    latitudeCord      =  math.floor(latitude/100) +(latitude - 100*(math.floor(latitude/100)))/60
-    if(latitudeDirection=="S"):
-        latitudeCord = -1*latitudeCord
-    return latitudeCord
-
-def getLongitudeCords(longitudeStr,longitudeDirection):
-    longitude = float(longitudeStr)
-    longitudeCord      =  math.floor(longitude/100) +(longitude - 100*(math.floor(longitude/100)))/60
-    if(longitudeDirection=="W"):
-        longitudeCord = -1*longitudeCord
-    return longitudeCord        
-
-
 
 
 if __name__ == "__main__":
@@ -81,6 +66,14 @@ if __name__ == "__main__":
         try:    
             if as7265xOnline:
                 as7265x.readMqtt();
+            if bme280Online:
+                bme280.readMqtt();
+            if pa101dOnline:
+                pa101d.readMqtt("GPRMC");                        
+            if scd30Online:
+                scd30.readMqtt();
+            if pa101dOnline:
+                pa101d.readMqtt("GPGGA");                        
         
 
         except Exception as e:
