@@ -86,7 +86,7 @@ class PAI101D_:
                     dateTime  = datetime.datetime.now()
                     dataStringPost = dataString.replace('\n', '')
                     sensorData = pynmea2.parse(dataStringPost)
-                    if strExpected == "GPGGA":
+                    if strExpected == "GGA":
                         if(sensorData.gps_qual>0):
                             sensorName = "GPSGPGGA2"
                             sensorDictionary = OrderedDict([
@@ -111,7 +111,7 @@ class PAI101D_:
 
                         #Getting Write Path
                         mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
-                    if strExpected == "GPRMC":
+                    if strExpected == "RMC":
                         if(sensorData.status=='A'):
                             sensorName = "GPSGPRMC2"
                             sensorDictionary = OrderedDict([
