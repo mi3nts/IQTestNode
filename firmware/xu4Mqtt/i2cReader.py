@@ -68,7 +68,8 @@ if __name__ == "__main__":
     scd30ReadTime  = time.time()
     
     pa101dOnline   =  pa101d.initiate()
-    pa101dReadTime  = time.time()
+    pa101dGGAReadTime  = time.time()
+    pa101dRMCReadTime  = time.time()    
 
     delta = 10
 
@@ -78,16 +79,18 @@ if __name__ == "__main__":
             if as7265xOnline and mSR.getDeltaTimeAM(as7265xReadTime,delta):
                 as7265xReadTime  = time.time()
                 as7265x.readMqtt();
-            if bme280Online:
+            if bme280Online and mSR.getDeltaTimeAM(bme280ReadTime,delta):
                 bme280ReadTime  = time.time()                
                 bme280.readMqtt();
-            if pa101dOnline:
+            if pa101dOnline and mSR.getDeltaTimeAM(pa101dGGAReadTime,delta):
                 pa101dReadTime  = time.time()
                 pa101d.readMqtt("GGA");                        
-            if scd30Online:
+            if scd30Online and mSR.getDeltaTimeAM(scd30ReadTime,delta):
                 scd30.readMqtt();
                 scd30ReadTime  = time.time()
-            
+            if pa101dOnline and mSR.getDeltaTimeAM(pa101dRMCReadTime,delta):
+                pa101dReadTime  = time.time()
+                pa101d.readMqtt("RMC");            
 
         except Exception as e:
             time.sleep(.5)
