@@ -18,6 +18,8 @@ import serial.tools.list_ports
 from collections import OrderedDict
 from glob import glob
 from mintsXU4 import mintsDefinitions as mD
+from mintsXU4 import mintsSensorReader as mSR
+
 # from mintsXU4 import mintsPoLo as mPL
 from collections import OrderedDict
 import struct
@@ -56,25 +58,36 @@ if __name__ == "__main__":
     print()
     
     # I2C Devices 
-    scd30Online    =  scd30.initiate(30)
-    bme280Online   =  bme280.initiate(30)
     as7265xOnline  =  as7265x.initiate()
-    pa101dOnline   =  pa101d.initiate()
-    # mbls001Onlune  =  mbls001.initiate()
+    as7265xReadTime  = time.time()
+
+    bme280Online   =  bme280.initiate(30)
+    bme280ReadTime  = time.time()
+
+    scd30Online    =  scd30.initiate(30)
+    scd30ReadTime  = time.time()
     
+    pa101dOnline   =  pa101d.initiate()
+    pa101dReadTime  = time.time()
+
+    delta = 10
+
+
     while True:
         try:    
-            if as7265xOnline:
+            if as7265xOnline and mSR.getDeltaTimeAM(as7265xReadTime,delta):
+                as7265xReadTime  = time.time()
                 as7265x.readMqtt();
             if bme280Online:
+                bme280ReadTime  = time.time()                
                 bme280.readMqtt();
             if pa101dOnline:
-                pa101d.readMqtt("RMC");                        
+                pa101dReadTime  = time.time()
+                pa101d.readMqtt("GGA");                        
             if scd30Online:
                 scd30.readMqtt();
-            if pa101dOnline:
-                pa101d.readMqtt("GGA");                        
-        
+                scd30ReadTime  = time.time()
+            
 
         except Exception as e:
             time.sleep(.5)
