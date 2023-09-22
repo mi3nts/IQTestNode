@@ -49,7 +49,6 @@ def main(firstReset,firstResolutionSetup,firstMetricSystemSetup,loopInterval):
     print("Connected to: " + ser.portstr)
     print(" ")
     line = []
-
     
     print("First Data Read")
     ser.write(str.encode('R\r\n'))
