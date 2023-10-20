@@ -54,6 +54,8 @@ dataFolderMQTTReference   = "/home/teamlary/mintsData/referenceMQTT"
 dataFolder                = "/home/teamlary/mintsData/raw"
 dataFolderMQTT            = "/home/teamlary/mintsData/rawMQTT"
 
+dataFolderTmp             = "/home/teamlary/mintsDataTmp"
+
 ipsPorts              = findIPSPorts()
 
 show2Port             = findPort("CP2104 USB to UART Bridge Controller")

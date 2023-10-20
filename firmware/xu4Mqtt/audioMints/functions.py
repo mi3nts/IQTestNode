@@ -13,6 +13,11 @@ import sounddevice as sd
 
 from multiprocessing import Pool, freeze_support
 
+from mintsXU4 import mintsSensorReader as mSR
+
+
+
+
 import sys
 import numpy as np
 
@@ -23,6 +28,24 @@ from audioMints import audio
 from audioMints import model
 
 
+def getAudioFileName(folderIn):
+    dateTimeIn = datetime.datetime.now()
+    strOut = str(dateTimeIn)
+    strOut = strOut.replace("-","_").replace(" ","_").replace(":","_").replace(".","_")
+    return folderIn + "/" + strOut + "/mintsAudio" +".wav"
+
+def makeAudioFile2(sampleRateIn,audioLength,channelNum,tmpFolder):
+    fileName = getAudioFileName(tmpFolder)
+    print("Recording  an audio file to be saved @: " + fileName)
+    recording = sd.rec(int(audioLength * sampleRateIn),\
+        samplerate=sampleRateIn,\
+             channels=channelNum)
+    sd.wait()  # Wait until recording is finished
+    mSR.directoryCheck(fileName)
+    write(fileName,sampleRateIn, recording)  # Save as WAV file
+    print("Recording Saved")
+    return recording;
+  
 
 def clearErrorLog():
 
@@ -469,4 +492,3 @@ def configSetUp(cfgIn,outPutPath,confidenceIn,cpuThreads):
 
 
     return cfgIn;
-
