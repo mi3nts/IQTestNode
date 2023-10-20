@@ -62,8 +62,9 @@ def main(cfg):
                     shutil.rmtree(folderIn)
 
                 for index, row in soundClassData.iterrows():
+                    dateTime = dateTimeBase + datetime.timedelta(seconds = row['Start (s)'])
                     sensorDictionary = OrderedDict([
-                        ("dateTime"     ,str(dateTimeBase + datetime.timedelta(seconds = row['Start (s)']))),
+                        ("dateTime"     ,str(dateTime)),
                         ("label"        ,row['Labels']),
                         ("confidence"   ,row['Confidence'])
                          ])
@@ -85,7 +86,6 @@ if __name__ == "__main__":
     print("    MINTS    ")
     print("=============")
     main(cfg)    
-
 
 
 
