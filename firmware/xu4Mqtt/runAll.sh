@@ -1,7 +1,8 @@
 #!/bin/bash
-#
-sleep 60
 
+sleep 55
+export LD_PRELOAD=/home/teamlary/.local/lib/python3.8/site-packages/scikit_learn.libs/libgomp-d22c30c5.so.1.0.0
+sleep 5
 
 kill $(pgrep -f 'python3 audioDeleter.py')
 sleep 5
@@ -18,11 +19,6 @@ sleep 5
 python3 ips7100ReaderV1.py &
 sleep 5
 
-kill $(pgrep -f 'python3 rainReader.py')
-sleep 5
-python3 rainReader.py &
-sleep 5
-
 kill $(pgrep -f 'python3 i2cReader.py')
 sleep 5
 python3 i2cReader.py &
@@ -33,15 +29,16 @@ sleep 5
 python3 airMarReader.py &
 sleep 5
 
-kill $(pgrep -f 'python3 GPSReader.py')
+kill $(pgrep -f 'python3 rg15Reader.py') 
 sleep 5
-python3 GPSReader.py &
+python3 rg15Reader.py &
 sleep 5
 
-kill $(pgrep -f 'audioAnalyzer.py')
+kill $(pgrep -f 'audioAnalyzer.py') 
 sleep 5
 python3 audioAnalyzer.py &
 sleep 5
+
 
 python3 ipReader.py
 sleep 5
