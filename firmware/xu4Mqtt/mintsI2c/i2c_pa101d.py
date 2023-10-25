@@ -59,14 +59,14 @@ class PAI101D_:
         self.gps.send_command("$PMTK161,0*28")
         return;
 
-    def getLatitudeCords(latitudeStr,latitudeDirection):
+    def getLatitudeCords(self,latitudeStr,latitudeDirection):
         latitude = float(latitudeStr)
         latitudeCord      =  math.floor(latitude/100) +(latitude - 100*(math.floor(latitude/100)))/60
         if(latitudeDirection=="S"):
             latitudeCord = -1*latitudeCord
         return latitudeCord
 
-    def getLongitudeCords(longitudeStr,longitudeDirection):
+    def getLongitudeCords(self,longitudeStr,longitudeDirection):
         longitude = float(longitudeStr)
         longitudeCord      =  math.floor(longitude/100) +(longitude - 100*(math.floor(longitude/100)))/60
         if(longitudeDirection=="W"):
