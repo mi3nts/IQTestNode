@@ -31,7 +31,7 @@ class PAI101D_:
             print("Reading only RMC and GGA Commands")
             self.gps.send_command("PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
 
-            print("Sending to Power Save Mode")
+            print("Sending to Full Power Mode")
             # self.gps.send_command("$PMTK161,0*28")
             self.gps.send_command("$PMTK225,0*2B")
 
@@ -51,12 +51,12 @@ class PAI101D_:
                 sentence = self.gps.read_sentence()
                 print(sentence)
                 if sentence.find(strExpected) >0:
-                    self.gps.send_command("$PMTK161,0*28")
+                    # self.gps.send_command("$PMTK161,0*28")
                     return sentence;                
             except TimeoutError:
                 continue
-        print("Setting PA101D to low power mode")
-        self.gps.send_command("$PMTK161,0*28")
+        # print("Setting PA101D to low power mode")
+        #self.gps.send_command("$PMTK161,0*28")
         return;
 
     def getLatitudeCords(self,latitudeStr,latitudeDirection):
