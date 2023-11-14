@@ -29,9 +29,9 @@ sleep 5
 python3 airMarReader.py &
 sleep 5
 
-kill $(pgrep -f 'python3 rg15Reader.py') 
+kill $(pgrep -f 'python3 rg15Reader.py')  
 sleep 5
-python3 rg15Reader.py &
+python3 rg15Reader.py >> /home/teamlary/logs/rainSensorCheck.txt 2>&1 &
 sleep 5
 
 kill $(pgrep -f 'audioAnalyzer.py') 
