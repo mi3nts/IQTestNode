@@ -29,17 +29,21 @@ def main():
     lastWIMDA = time.time()
     lastYXXDR = time.time()
 
+    lastCHECK = time.time()
+    
     delta  = 5
     print("connected to: " + ser.portstr)
-
+    ser.flushInput()
     #this will store the line
     line = []
     while True:
         try:
             for c in ser.read():
                 line.append(chr(c))
+               
                 if chr(c) == '\n':
                     dataString     = (''.join(line)).replace("\r\n","")
+                    
                     dateTime  = datetime.datetime.now()
                     print(dataString)
 
@@ -78,7 +82,15 @@ def main():
                         mSR.YXXDRWriteAM2(dataString,dateTime)
                         lastYXXDR = time.time()
                     # print(str(dataString))
-
+                    
+                    line = []
+                    break
+                    
+                    
+                if mSR.getDeltaTimeAM(lastWIMDA,10):
+                    lastWIMDA = time.time()
+                    print("Sensor Error")
+                    ser.flushInput()
                     line = []
                     break
         except:
@@ -91,5 +103,3 @@ def main():
 
 if __name__ == "__main__":
    main()
-
-
