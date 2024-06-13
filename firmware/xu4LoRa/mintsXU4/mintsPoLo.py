@@ -87,10 +87,6 @@ def readingDeviceProperties(macAddress,loRaE5MiniPorts,ips7100Ports,gpsPorts):
     print("IPS7100 Ports:")
     for dev in ips7100Ports:
         print("\t{0}".format(dev))
-    
-    # print("GPS Ports:")
-    # for dev in gpsPorts:
-    #     print("\t{0}".format(dev))
 
     return;
 
