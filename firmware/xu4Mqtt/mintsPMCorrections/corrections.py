@@ -255,6 +255,7 @@ def keepClimateData(dateTime,sensorName,sensorDictionary):
                 ])
         
     if climateData:
+        print(climateData)
         writeJSONLatestClimate(climateData,sensorName)
 
 def writeJSONLatestClimate(sensorDictionary,sensorName):
