@@ -73,6 +73,7 @@ if __name__ == "__main__":
 
     delta = 10
 
+
     while True:
         try:    
             if as7265xOnline and mSR.getDeltaTimeAM(as7265xReadTime,delta):
