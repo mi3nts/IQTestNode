@@ -105,7 +105,7 @@ def doPrediction(sensorID,sensorDictionary,dateTime):
         if climateData is not None:
             print("Climate data found")
             humidity, temperature, dewPoint, pressure =\
-                    climateData['humidity'], climateData['temperature'], climateData['dewPoint'], climateData['pressure']
+                    float(climateData['humidity']), float(climateData['temperature']), float(climateData['dewPoint']), float(climateData['pressure'])
             climateNullValidity  = 1
 
             if is_valid_temperature(temperature) and is_valid_humidity(humidity):
