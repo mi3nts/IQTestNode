@@ -275,7 +275,7 @@ def loadJSONLatestClimate(sensorName):
             loaded_data = json.load(fp)
             print("Json Data Loaded Successfully")
             # Now 'loaded_data' contains the Python dictionary loaded from the JSON file
-            print(loaded_data)
+            # print(loaded_data)
             return loaded_data
     except FileNotFoundError:
         print("File Not Found")
