@@ -959,9 +959,6 @@ def GPSGPRMC2Write(dataString,dateTime):
 
     if(sensorData.status=='A'):
         sensorName = "GPSGPRMC2"
-        print("TESTER")
-        print("----------------------------")
-        print(str(sensorData.datestamp.isoformat()))
         sensorDictionary = OrderedDict([
                 ("dateTime"             ,str(dateTime)),
                 ("timestamp"            ,str(sensorData.timestamp)),
@@ -974,11 +971,10 @@ def GPSGPRMC2Write(dataString,dateTime):
                 ("longitudeDirection"   ,sensorData.lon_dir),
                 ("speedOverGround"      ,sensorData.spd_over_grnd),
                 ("trueCourse"           ,sensorData.true_course),
-                ("dateStamp"            ,str(sensorData.datestamp.isoformat())),
+                ("dateStamp"            ,sensorData.datestamp.isoformat()),
                 ("magVariation"         ,sensorData.mag_variation),
                 ("magVariationDirection",sensorData.mag_var_dir)
                  ])
-
         #Getting Write Path
         sensorFinisher(dateTime,sensorName,sensorDictionary)
 
