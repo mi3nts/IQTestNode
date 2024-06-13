@@ -953,9 +953,11 @@ def GPSGPRMCWrite(dataString,dateTime):
         sensorFinisher(dateTime,sensorName,sensorDictionary)
 
 def GPSGPRMC2Write(dataString,dateTime):
-
+  
     dataStringPost = dataString.replace('\n', '')
     sensorData = pynmea2.parse(dataStringPost)
+    print("TESTER")
+    print(str(sensorData.datestamp))
     if(sensorData.status=='A'):
         sensorName = "GPSGPRMC2"
         sensorDictionary = OrderedDict([
