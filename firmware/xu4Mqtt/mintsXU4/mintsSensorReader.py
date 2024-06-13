@@ -936,7 +936,7 @@ def GPSGPRMCWrite(dataString,dateTime):
         sensorName = "GPSGPRMC"
         sensorDictionary = OrderedDict([
                 ("dateTime"             ,str(dateTime)),
-                ("timestamp"            ,sensorData.timestamp),
+                ("timestamp"            ,str(sensorData.timestamp)),
                 ("status"               ,sensorData.status),
                 ("latitude"             ,sensorData.lat),
                 ("latitudeDirection"    ,sensorData.lat_dir),
@@ -944,7 +944,7 @@ def GPSGPRMCWrite(dataString,dateTime):
                 ("longitudeDirection"   ,sensorData.lon_dir),
                 ("speedOverGround"      ,sensorData.spd_over_grnd),
                 ("trueCourse"           ,sensorData.true_course),
-                ("dateStamp"            ,sensorData.datestamp),
+                ("dateStamp"            ,str(sensorData.datestamp)),
                 ("magVariation"         ,sensorData.mag_variation),
                 ("magVariationDirection",sensorData.mag_var_dir)
                  ])
@@ -970,7 +970,7 @@ def GPSGPRMC2Write(dataString,dateTime):
                 ("longitudeDirection"   ,sensorData.lon_dir),
                 ("speedOverGround"      ,sensorData.spd_over_grnd),
                 ("trueCourse"           ,sensorData.true_course),
-                ("dateStamp"            ,sensorData.datestamp),
+                ("dateStamp"            ,str(sensorData.datestamp)),
                 ("magVariation"         ,sensorData.mag_variation),
                 ("magVariationDirection",sensorData.mag_var_dir)
                  ])

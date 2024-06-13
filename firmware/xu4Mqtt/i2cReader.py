@@ -82,13 +82,13 @@ if __name__ == "__main__":
                 bme280ReadTime  = time.time()                
                 bme280.readMqtt();
             if pa101dOnline and mSR.getDeltaTimeAM(pa101dGGAReadTime,delta):
-                pa101dReadTime  = time.time()
+                pa101dGGAReadTime  = time.time()
                 pa101d.readMqtt("GGA");                        
             if scd30Online and mSR.getDeltaTimeAM(scd30ReadTime,delta):
                 scd30.readMqtt();
                 scd30ReadTime  = time.time()
             if pa101dOnline and mSR.getDeltaTimeAM(pa101dRMCReadTime,delta):
-                pa101dReadTime  = time.time()
+                pa101dRMCReadTime  = time.time()
                 pa101d.readMqtt("RMC");            
 
         except Exception as e:
