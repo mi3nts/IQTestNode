@@ -86,8 +86,8 @@ if __name__ == "__main__":
                 pa101dGGAReadTime  = time.time()
                 pa101d.readMqtt("GGA");                        
             if scd30Online and mSR.getDeltaTimeAM(scd30ReadTime,delta):
-                scd30.readMqtt();
                 scd30ReadTime  = time.time()
+                scd30.readMqtt();
             if pa101dOnline and mSR.getDeltaTimeAM(pa101dRMCReadTime,delta):
                 pa101dRMCReadTime  = time.time()
                 pa101d.readMqtt("RMC");            
