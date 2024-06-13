@@ -87,12 +87,12 @@ def main():
                     break
                     
                     
-                if mSR.getDeltaTimeAM(lastWIMDA,10):
-                    lastWIMDA = time.time()
-                    print("Sensor Error")
-                    ser.flushInput()
-                    line = []
-                    break
+                #if mSR.getDeltaTimeAM(lastWIMDA,10):
+                   # lastWIMDA = time.time()
+                   # print("Sensor Error")
+                    #ser.flushInput()
+                   # line = []
+                    #break
         except:
             print("Incomplete String Read")
             line = []

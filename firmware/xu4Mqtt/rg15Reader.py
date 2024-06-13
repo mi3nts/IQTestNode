@@ -109,11 +109,15 @@ def main(firstReset,firstResolutionSetup,firstMetricSystemSetup,loopInterval):
 
             
 if __name__ == "__main__":
+
     print("=============")
     print("    MINTS    ")
     print("=============")
+    time.sleep(10)    
     print("Monitoring Rain Sensor on port: {0}".format(rainPort)+ " with baudrate " + str(baudRate))
+    time.sleep(10)
     main(firstReset,firstResolutionSetup,firstMetricSystemSetup,loopInterval)
+    
     
     
     
