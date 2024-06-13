@@ -957,7 +957,8 @@ def GPSGPRMC2Write(dataString,dateTime):
     dataStringPost = dataString.replace('\n', '')
     sensorData = pynmea2.parse(dataStringPost)
     print("TESTER")
-    print(str(sensorData.datestamp))
+    print("----------------------------")
+    print(str(sensorData.datestamp.isoformat()))
     if(sensorData.status=='A'):
         sensorName = "GPSGPRMC2"
         sensorDictionary = OrderedDict([
