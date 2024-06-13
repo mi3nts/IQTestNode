@@ -111,6 +111,7 @@ class PAI101D_:
 
                             #Getting Write Path
                             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
+                            return
                     if strExpected == "RMC":
                         if(sensorData.status=='A'):
                             sensorName = "GPSGPRMC2"
@@ -132,6 +133,7 @@ class PAI101D_:
                                     ])
                             #Getting Write Path
                             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
+                            return
 
             except TimeoutError:
                 continue
