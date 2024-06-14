@@ -24,7 +24,7 @@ from collections import OrderedDict
 import datetime
 import joblib
 import json
-
+import yaml
 # For humidity correction
 # In order to apply corrections, the sensor finisher code needs to be updated
 #    1) The YAML file should have a Climate Sensor and a PM sensor - May be the model location
@@ -35,9 +35,11 @@ import json
 #        - Dew Likelyhood
 #        - Climate Data Current Validity
 
+corrections       = yaml.load(open(mD.correctionsFile))
+print(corrections)
+pmSensor          = corrections['pmSensor']  
+climateSensor     = corrections['climateSensor'] 
 
-climateSensor     = mD.climateSensor
-pmSensor          = mD.pmSensor
 
 dataFolderTmp     = mD.dataFolderTmp
 macAddress        = mD.macAddress

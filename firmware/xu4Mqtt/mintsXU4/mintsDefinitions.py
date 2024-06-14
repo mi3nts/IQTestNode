@@ -73,9 +73,8 @@ mqttPort              =  8883  # Secure port
 gpsPort               = findPort("GPS/GNSS Receiver")
 
 # For Humidity Corrections
-pmSensor      = "IPS7100"
-climateSensor = "WIMDA"
-modelFile     = 'mintsXU4/climateCorrectionModel.joblib'
+correctionsFile       = 'mintsXU4/corrections.yml'
+modelFile             = 'mintsXU4/climateCorrectionModel.joblib'
 
 if __name__ == "__main__":
     # the following code is for debugging
